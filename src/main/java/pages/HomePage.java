@@ -50,11 +50,11 @@ public void inputUserIdAndPasswordAndClickLogin() throws InterruptedException {
 	passWord.sendKeys("secret_sauce");
 	logIn.click();
 	Thread.sleep(5000);
+	
 	sauce.click();
 	Thread.sleep(5000);
 	addToCart.click();
-	//Alert alert = driver.switchTo().alert();
-	//alert.accept();
+
 	Thread.sleep(5000);
 	shoppingCartLink.click();
 	
