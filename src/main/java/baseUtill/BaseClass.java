@@ -1,6 +1,7 @@
 package baseUtill;
 
 import java.time.Duration;
+import java.util.HashMap;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,10 +16,15 @@ public class BaseClass {
 	public  HomePage homePage; 	
 
 	@BeforeMethod
-	public void setUp()  { 
+	public void setUp()  {
+		//how can you handle browser password compromise popup ?
+		// with ChromeOptions Class .Ans
 		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
 		ChromeOptions option =new ChromeOptions();
-		option.addArguments("--disable-notifications");
+		//option.addArguments("--disable-save-password-bubble");
+		option.setExperimentalOption("prefs",new HashMap<String, Object> (){{
+		 put("profile.password_manager_leak_detection",false);
+		}} );//How to disable chrome password compromise popup using selenium WebDriver
 		driver = new ChromeDriver(option); 
         driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
